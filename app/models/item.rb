@@ -2,8 +2,11 @@ class Item < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
   
-  belongs_to :user
+ 
   
-  validates :name, :description,  presence: true
+  validates :name, :description, :image, presence: true
   validates :price, numericality:{ greater_than: 0}
+  
+   belongs_to :user
+  
 end

@@ -29,41 +29,29 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><span>E</span>-Shop</a>
+              <% if user_signed_in? %>
+                 Welcome to <%= link_to "Clique", root_path %>,
+              <%= current_user.name %> 
+              <% else %>
+               <%= link_to "Clique", root_path %>
+               <% end %>
 						</div>
 						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
+						
 							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
+							
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><%= link_to "Login", new_user_session_path %></li>
-                <li><%= link_to "Logout",destroy_user_session_path, method: :delete, class:"btn btn-danger btn-block" %></li>
+              <ul>
+               
+                <% if user_signed_in? %> 
+                  <li><%= link_to 'New Item', new_item_path,  class:"btn btn-default add-to-cart" %></li>
+                  <li><%= link_to "Logout",destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to "Login", new_user_session_path %></li>
+                <% end %>  
 							</ul>
 						</div>
 					</div>
@@ -90,20 +78,17 @@
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                       <li><%= link_to "Products", items_path %></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#">Clique<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
+                                        
+										                    <li><%= link_to "About Us", pages_about_path %></li> 
+                                      <li><%= link_to "Contact", pages_contact_path %></li>
+                                      <li><a href="#">Join the Clique</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+               
 							</ul>
 						</div>
 					</div>

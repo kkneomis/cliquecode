@@ -1,17 +1,19 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  #before_filter :check_user, only: [:edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
   end
+  
+
 
   # GET /items/new
   def new
@@ -26,7 +28,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    @item.user_id = current_user.id
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -72,4 +74,9 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :description, :price, :image)
     end
+  def check_user
+    if current_user != @item.user
+      redirect_to root_url, alert: "Sorry, this item belongs to someone else"\
+      end
+  end
 end
