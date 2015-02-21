@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: clique
+  api_key: '792417653613812'
+  api_secret: X0uXdLSwK8Hv_qgAq_0ASJMgCh4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: clique
+  api_key: '792417653613812'
+  api_secret: X0uXdLSwK8Hv_qgAq_0ASJMgCh4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: clique
+  api_key: '792417653613812'
+  api_secret: X0uXdLSwK8Hv_qgAq_0ASJMgCh4
+  enhance_image_tag: true
+  static_image_support: false
