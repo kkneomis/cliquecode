@@ -82,6 +82,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #required for devise
-  config.action_mailer.default_url_options = { host: 'www.bisonshare.com' }
+  config.action_mailer.default_url_options = { host: 'https://cliquecode.herokuapp.com/' }
   
 end
