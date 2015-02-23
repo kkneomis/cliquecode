@@ -5,7 +5,8 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-#config.assets.initialize_on_precompile = false
+
+
 module Clique
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,4 +21,7 @@ module Clique
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
+  
+  config.assets.initialize_on_precompile = false
+  
 end
